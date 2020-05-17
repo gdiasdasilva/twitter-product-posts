@@ -7,6 +7,9 @@ class ProductsUpdateJob < ActiveJob::Base
       return
     end
 
+    product_handle = webhook[:handle]
+    product_url = "#{shop.shopify_domain}/products/#{product_handle}"
+
     shop.with_shopify_session do
     end
   end

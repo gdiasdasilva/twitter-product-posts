@@ -10,7 +10,7 @@ ShopifyApp.configure do |config|
   config.api_version = "2020-04"
   config.shop_session_repository = 'Shop'
   config.webhooks = [
-    {topic: 'products/update', address: 'https://7651c727.ngrok.io/webhooks/products_update', format: 'json'},
+    {topic: 'products/update', address: 'https://twitter-product-posts.serveo.net/webhooks/products_update', format: 'json'},
   ]
 end
 
