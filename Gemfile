@@ -14,6 +14,7 @@ gem 'httparty'
 gem 'oauth'
 gem 'shopify_app'
 gem 'twitter'
+gem "typhoeus"
 gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
