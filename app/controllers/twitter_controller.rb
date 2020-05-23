@@ -52,8 +52,4 @@ class TwitterController < AuthenticatedController
       )
     end
   end
-
-  def current_shop
-    Shop.find_by!(shopify_domain: ShopifyAPI::Shop.current.domain)
-  end
 end
