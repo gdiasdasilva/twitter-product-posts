@@ -1,0 +1,32 @@
+<div class="Polaris-Card">
+  <div class="Polaris-Card__Header">
+    <h2 class="Polaris-Heading">Settings</h2>
+  </div>
+
+  <div class="Polaris-Card__Section">
+    <div class="Polaris-Stack Polaris-Stack--alignmentCenter">
+      <div class="Polaris-Stack__Item Polaris-Stack__Item--fill">
+        <% if @twitter_account.present? %>
+          <div class="Polaris-TextContainer">Currently connected to Twitter as <strong><%= "@#{@twitter_account.twitter_handle}" %></strong>.</div>
+        <% else %>
+          <div class="Polaris-TextContainer">You don't have a Twitter account linked to this Shopify app yet.</div>
+        <% end %>
+      </div>
+      <div class="Polaris-Stack__Item">
+        <% if @twitter_account.present? %>
+          <%= link_to twitter_log_out_path, target: "blank" do %>
+            <button type="button" class="Polaris-Button Polaris-Button--destructive">
+              <span class="Polaris-Button__Content"><span class="Polaris-Button__Text">Unlink your Twitter Account</span></span>
+            </button>
+          <% end %>
+        <% else %>
+          <%= link_to twitter_request_token_path, target: "blank" do %>
+            <button type="button" class="Polaris-Button Polaris-Button--primary">
+              <span class="Polaris-Button__Content"><span class="Polaris-Button__Text">Add your Twitter Account</span></span>
+            </button>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
