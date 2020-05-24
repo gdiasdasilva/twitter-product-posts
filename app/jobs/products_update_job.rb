@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class ProductsUpdateJob < ActiveJob::Base
-  include ActionView::Helpers::NumberHelper
-
   def perform(shop_domain:, webhook:)
     shop = Shop.find_by(shopify_domain: shop_domain)
 
@@ -22,23 +20,14 @@ class ProductsUpdateJob < ActiveJob::Base
 
     return unless product_url.present? && product_title.present? && product_min_price.present?
 
-    formatted_price = format_currency(product_min_price, currency)
-
-    message = "Check out the most recent news about our #{product_title}.\n" \
-              "Now starting at #{formatted_price}." \
-              "\n\n" \
-              "#{product_url}"
+    message = GenerateTweetFromTemplateService.new(
+      product_title: product_title,
+      price: product_min_price,
+      currency: currency,
+      product_url: product_url,
+      template: shop.current_tweet_template.template
+    ).call
 
     PostToTwitterService.new(twitter_account: TwitterAccount.first, message: message).call
-  end
-
-  private
-
-  def format_currency(value, currency)
-    if currency == "USD"
-      number_to_currency(value, unit: "$", format: "%u%n")
-    else
-      number_to_currency(value, unit: "€", format: "%n%u")
-    end
   end
 end
