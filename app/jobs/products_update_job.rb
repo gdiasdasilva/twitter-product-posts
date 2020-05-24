@@ -25,7 +25,7 @@ class ProductsUpdateJob < ActiveJob::Base
     formatted_price = format_currency(product_min_price, currency)
 
     message = "Check out the most recent news about our #{product_title}.\n" \
-              "Available from #{formatted_price}." \
+              "Now starting at #{formatted_price}." \
               "\n\n" \
               "#{product_url}"
 
