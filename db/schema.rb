@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_24_193037) do
+ActiveRecord::Schema.define(version: 2020_05_24_232344) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,9 @@ ActiveRecord::Schema.define(version: 2020_05_24_193037) do
     t.bigint "twitter_account_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "tweet_template_id"
     t.index ["shopify_domain"], name: "index_shops_on_shopify_domain", unique: true
+    t.index ["tweet_template_id"], name: "index_shops_on_tweet_template_id"
     t.index ["twitter_account_id"], name: "index_shops_on_twitter_account_id"
   end
 
@@ -41,5 +43,6 @@ ActiveRecord::Schema.define(version: 2020_05_24_193037) do
     t.index ["twitter_id"], name: "index_twitter_accounts_on_twitter_id", unique: true
   end
 
+  add_foreign_key "shops", "tweet_templates"
   add_foreign_key "shops", "twitter_accounts"
 end
