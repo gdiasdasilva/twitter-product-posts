@@ -1,0 +1,36 @@
+
+<div class="Polaris-Card">
+  <div class="Polaris-Card__Header">
+    <h2 class="Polaris-Heading">Tweet Templates</h2>
+  </div>
+  <div class="Polaris-Card__Section">
+    <div class="Polaris-ResourceList__ResourceListWrapper">
+      <ul class="Polaris-ResourceList" aria-live="polite">
+        <% @all_tweet_templates.each do |tt| %>
+          <li class="Polaris-ResourceList__ItemWrapper">
+            <div class="Polaris-ResourceList-Item">
+              <div class="Polaris-ResourceList-Item__Container">
+                <div class="Polaris-ResourceList-Item__Content">
+                  <div class="Polaris-Stack Polaris-Stack--alignmentCenter">
+                    <div class="Polaris-Stack__Item Polaris-Stack__Item--fill">
+                      <div class="Polaris-TextContainer rendered-tweet-template">
+                        <code><%= tt.template %></code>
+                      </div>
+                    </div>
+                    <div class="Polaris-Stack__Item">
+                      <% unless tt == @active_tweet_template %>
+                        <button type="button" class="Polaris-Button Polaris-Button--disabled">
+                          <span class="Polaris-Button__Content"><span class="Polaris-Button__Text">Enable</span></span>
+                        </button>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

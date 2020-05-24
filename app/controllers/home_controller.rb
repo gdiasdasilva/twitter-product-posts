@@ -3,6 +3,7 @@
 class HomeController < AuthenticatedController
   def index
     @twitter_account = current_shop.twitter_account
-    @tweet_template = current_shop.active_tweet_template
+    @active_tweet_template = current_shop.active_tweet_template
+    @all_tweet_templates = TweetTemplate.all
   end
 end

@@ -12,7 +12,7 @@ TweetTemplate.create(
 )
 
 TweetTemplate.create(
-  template: "They're finally here!\nVisit our store to buy the latest [product-title].\n\n[product-url]."
+  template: "They're finally here!\nVisit our store to buy the latest [product-title].\n\n[product-url]"
 )
 
 TweetTemplate.create(
