@@ -1,27 +1,42 @@
-<% if @twitter_account.present? %>
-  Currently signed in on Twitter as <strong><%= "@#{@twitter_account.twitter_handle}" %></strong>. <%= link_to "Sign out", twitter_log_out_path %>
-<% else %>
-  <%= link_to "Sign in with Twitter", twitter_request_token_path, target: "blank" %>
-<% end %>
+<div class="Polaris-Page">
+  <div class="Polaris-Page__Content">
+    <div class="Polaris-Layout">
+      <div class="Polaris-Layout__Section">
 
-<h2>Products</h2>
+        <div class="Polaris-Card">
+          <div class="Polaris-Card__Header">
+            <h2 class="Polaris-Heading">Settings</h2>
+          </div>
 
-<ul>
-  <% @products.each do |product| %>
-    <li><%= link_to product.title, "https://#{@current_shopify_session.domain}/admin/products/#{product.id}", target: "_top" %></li>
-  <% end %>
-</ul>
+          <div class="Polaris-Card__Section">
+            <div class="Polaris-Stack Polaris-Stack--alignmentCenter">
+              <div class="Polaris-Stack__Item Polaris-Stack__Item--fill">
+                <% if @twitter_account.present? %>
+                  <div class="Polaris-TextContainer">Currently connected to Twitter as <strong><%= "@#{@twitter_account.twitter_handle}" %></strong>.</div>
+                <% else %>
+                  <div class="Polaris-TextContainer">You don't have a Twitter account linked to this Shopify app yet.</div>
+                <% end %>
+              </div>
+              <div class="Polaris-Stack__Item">
+                <% if @twitter_account.present? %>
+                  <%= link_to twitter_log_out_path, target: "blank" do %>
+                    <button type="button" class="Polaris-Button Polaris-Button--destructive">
+                      <span class="Polaris-Button__Content"><span class="Polaris-Button__Text">Unlink your Twitter Account</span></span>
+                    </button>
+                  <% end %>
+                <% else %>
+                  <%= link_to twitter_request_token_path, target: "blank" do %>
+                    <button type="button" class="Polaris-Button Polaris-Button--primary">
+                      <span class="Polaris-Button__Content"><span class="Polaris-Button__Text">Add your Twitter Account</span></span>
+                    </button>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
 
-<hr>
-
-<h2>Webhooks</h2>
-
-<% if @webhooks.present? %>
-  <ul>
-    <% @webhooks.each do |webhook| %>
-      <li><%= webhook.topic %> : <%= webhook.address %></li>
-    <% end %>
-  </ul>
-<% else %>
-  <p>This app has not created any webhooks for this Shop. Add webhooks to your ShopifyApp initializer if you need webhooks</p>
-<% end %>
+      </div>
+    </div>
+  </div>
+</div>
