@@ -1,3 +1,9 @@
+<% if @twitter_account.present? %>
+  Currently signed in on Twitter as <strong><%= "@#{@twitter_account.twitter_handle}" %></strong>. <%= link_to "Sign out", twitter_log_out_path %>
+<% else %>
+  <%= link_to "Sign in with Twitter", twitter_request_token_path, target: "blank" %>
+<% end %>
+
 <h2>Products</h2>
 
 <ul>
