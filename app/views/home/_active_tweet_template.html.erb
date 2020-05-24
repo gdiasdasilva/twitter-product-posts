@@ -3,19 +3,17 @@
     <div class="Polaris-Card__SectionHeader">
       <h3 class="Polaris-Subheading">Active tweet template</h3>
     </div>
-    <blockquote>
-      Check out the most recent news about our <code>[product-title]</code>.<br>
-      Now starting at <code>[product-price]</code>.<br><br>
-      <code>[product-url]</code>
-    </blockquote>
+    <code class="rendered-tweet-template">
+      <%= @tweet_template.template %>
+    </code>
   </div>
 
   <div class="Polaris-Card__Section Polaris-Card__Section--subdued">
     <div class="Polaris-Card__SectionHeader">
-      <h3 class="Polaris-Subheading">Example tweet</h3>
+      <h3 class="Polaris-Subheading">Example tweet with active template</h3>
     </div>
-    <blockquote>Check out the most recent news about our Fortaleza Wooden Sunglasses.<br>
-    Now starting at 24.99€.<br><br>
-    example.com/wooden-sunglasses</blockquote>
+    <p class="rendered-tweet-template">
+      <%= @tweet_template.example_tweet %>
+    </p>
   </div>
 </div>

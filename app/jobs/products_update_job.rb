@@ -25,7 +25,7 @@ class ProductsUpdateJob < ActiveJob::Base
       price: product_min_price,
       currency: currency,
       product_url: product_url,
-      template: shop.current_tweet_template.template
+      template: shop.active_tweet_template.template
     ).call
 
     PostToTwitterService.new(twitter_account: TwitterAccount.first, message: message).call

@@ -8,4 +8,8 @@ class Shop < ActiveRecord::Base
   def api_version
     ShopifyApp.configuration.api_version
   end
+
+  def active_tweet_template
+    TweetTemplate.first
+  end
 end

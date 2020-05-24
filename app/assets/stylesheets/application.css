@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+.rendered-tweet-template {
+  white-space: pre-line;
+}
