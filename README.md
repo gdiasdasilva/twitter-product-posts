@@ -1,24 +1,10 @@
-# README
+# Twitter Product Posts
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Twitter Product Posts is a Shopify app that integrates with Twitter to automatically tweet
+after certain product-related events are triggered.
 
-Things you may want to cover:
+## Versions
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Ruby version: 2.6.6
+* PostgreSQL version: 12.0
+* Ruby on Rails version: 6.0.3
