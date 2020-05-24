@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# Handle twitter callbacks
 class TwitterController < AuthenticatedController
   skip_before_action :verify_authenticity_token
 
