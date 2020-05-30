@@ -1,4 +1,4 @@
-# 🛒 Twitter Product Posts
+# Twitter Product Posts
 
 [![Codeship Status for gdiasdasilva/twitter-product-posts](https://app.codeship.com/projects/8a727550-8047-0138-a2f9-7e7dbe13f4dd/status?branch=master)](https://app.codeship.com/projects/397604)
 
