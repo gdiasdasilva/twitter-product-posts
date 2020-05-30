@@ -19,9 +19,12 @@
                     </div>
                     <div class="Polaris-Stack__Item">
                       <% unless tt == @active_tweet_template %>
-                        <button type="button" class="Polaris-Button Polaris-Button--disabled">
-                          <span class="Polaris-Button__Content"><span class="Polaris-Button__Text">Enable</span></span>
-                        </button>
+                        <%= form_with url: shop_path(@current_shop), method: "patch", local: true do %>
+                          <%= hidden_field_tag(:tweet_template_id, tt.id) %>
+                          <button type="submit" class="Polaris-Button">
+                            <span class="Polaris-Button__Content"><span class="Polaris-Button__Text">Enable</span></span>
+                          </button>
+                        <% end %>
                       <% end %>
                     </div>
                   </div>
