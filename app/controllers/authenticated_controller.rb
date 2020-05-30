@@ -4,6 +4,6 @@ class AuthenticatedController < ApplicationController
   include ShopifyApp::Authenticated
 
   def current_shop
-    Shop.find_by!(shopify_domain: ShopifyAPI::Shop.current.domain)
+    @current_shop ||= Shop.find_by!(shopify_domain: ShopifyAPI::Shop.current.domain)
   end
 end

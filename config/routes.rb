@@ -7,4 +7,6 @@ Rails.application.routes.draw do
     get "oauth_callback"
     get "log_out"
   end
+
+  resources :shops, only: [:update]
 end
