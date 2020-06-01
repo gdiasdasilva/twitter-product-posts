@@ -16,3 +16,12 @@ require("channels")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 require("shopify_app")
+
+// Dismiss dismissable banners
+document.addEventListener('DOMContentLoaded', () => {
+  (document.querySelectorAll('.Polaris-Banner__Dismiss') || []).forEach((dismiss) => {
+    dismiss.addEventListener('click', function () {
+      this.parentNode.remove();
+    });
+  });
+});
