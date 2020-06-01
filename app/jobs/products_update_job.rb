@@ -4,10 +4,17 @@ class ProductsUpdateJob < ActiveJob::Base
   def perform(shop_domain:, webhook:)
     shop = Shop.find_by(shopify_domain: shop_domain)
 
-    if shop.nil? || shop.twitter_account.nil?
+    if shop.nil?
       logger.error("#{self.class} failed: cannot find shop with domain '#{shop_domain}'")
       return
     end
+
+    if shop.twitter_account.nil?
+      logger.error("#{self.class} failed: cannot find twitter account for shop with domain '#{shop_domain}'")
+      return
+    end
+
+    return unless inventory_stock_returned?(webhook)
 
     product_url       = "#{shop.shopify_domain}/products/#{webhook[:handle]}"
     product_title     = webhook[:title]
@@ -28,6 +35,20 @@ class ProductsUpdateJob < ActiveJob::Base
       template: shop.active_tweet_template.template
     ).call
 
-    PostToTwitterService.new(twitter_account: TwitterAccount.first, message: message).call
+    PostToTwitterService.new(twitter_account: shop.twitter_account, message: message).call
+  end
+
+  private
+
+  def inventory_stock_returned?(webhook)
+    webhook[:variants].each do |variant|
+      return false unless variant[:old_inventory_quantity].zero?
+    end
+
+    webhook[:variants].each do |variant|
+      return true if variant[:inventory_quantity].positive?
+    end
+
+    false
   end
 end
