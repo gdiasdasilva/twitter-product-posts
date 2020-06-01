@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 TweetTemplate.create(
-  template: "Check out the most recent news about our [product-title].\n" \
+  template: "Our [product-title] are back in stock!\n" \
               "Now starting at [product-price].\n\n[product-url]"
 )
 
