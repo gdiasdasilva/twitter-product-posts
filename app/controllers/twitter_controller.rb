@@ -15,7 +15,10 @@ class TwitterController < AuthenticatedController
   end
 
   def oauth_callback
-    raise "Authentication error." unless params[:oauth_token] == session[:token]
+    unless params[:oauth_token] == session[:token]
+      redirect_to root_path, alert: "Invalid OAuth token. Please try again."
+      return
+    end
 
     hash = { oauth_token: session[:token], oauth_token_secret: session[:token_secret] }
 
@@ -30,12 +33,12 @@ class TwitterController < AuthenticatedController
     )
 
     current_shop.update(twitter_account: twitter_account)
-    redirect_to root_path
+    redirect_to root_path, notice: "Your Twitter account was successfully linked."
   end
 
   def log_out
     current_shop.update(twitter_account: nil)
-    redirect_to root_path
+    redirect_to root_path, notice: "Twitter account successfully unlinked."
   end
 
   private
