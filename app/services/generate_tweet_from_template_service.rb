@@ -8,7 +8,7 @@ class GenerateTweetFromTemplateService
     @price = price
     @currency = currency
     @product_url = product_url
-    @template = template
+    @template = template.dup
   end
 
   def call
@@ -21,6 +21,7 @@ class GenerateTweetFromTemplateService
     @template.gsub!("[product-title]", @product_title)
     @template.gsub!("[product-price]", formatted_price)
     @template.gsub!("[product-url]", @product_url)
+    @template
   end
 
   def formatted_price
