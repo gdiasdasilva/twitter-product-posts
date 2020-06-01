@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe "ShopsControllers", type: :request do
+RSpec.describe "ShopsController", type: :request do
   describe "#update" do
     let(:shop) { create(:shop, tweet_template_id: nil) }
     let(:tweet_template) { create(:tweet_template) }
