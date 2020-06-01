@@ -1,8 +1,27 @@
+<% if @twitter_account.present? %>
+  <%= render "informational_banner", title: "Automatic tweeting is enabled", body: "A tweet will be published " \
+    "in your account every time a product is back in stock." do %>
+    <%= link_to twitter_log_out_path, target: "blank" do %>
+      <button type="button" class="Polaris-Button Polaris-Button--outline">
+        <span class="Polaris-Button__Content"><span class="Polaris-Button__Text">Unlink your Twitter Account</span></span>
+      </button>
+    <% end %>
+  <% end %>
+<% else %>
+  <%= render "warning_banner", title: "Automatic tweeting is disabled", body: "You haven't set up a Twitter account. " \
+    "Automatic tweeting upon stock return for a product is disabled until you do it." do %>
+    <%= link_to twitter_request_token_path, target: "blank" do %>
+      <button type="button" class="Polaris-Button Polaris-Button--outline">
+        <span class="Polaris-Button__Content"><span class="Polaris-Button__Text">Add your Twitter Account</span></span>
+      </button>
+    <% end %>
+  <% end %>
+<% end %>
+
 <div class="Polaris-Card">
   <div class="Polaris-Card__Header">
     <h2 class="Polaris-Heading">Settings</h2>
   </div>
-
   <div class="Polaris-Card__Section">
     <div class="Polaris-Stack Polaris-Stack--alignmentCenter">
       <div class="Polaris-Stack__Item Polaris-Stack__Item--fill">
