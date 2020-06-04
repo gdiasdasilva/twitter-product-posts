@@ -1,18 +1,10 @@
-<div class="Polaris-Page">
-  <div class="Polaris-Page__Content">
-    <div class="Polaris-Layout">
-      <div class="Polaris-Layout__Section">
-        <% flash.each do |type, msg| %>
-          <% if type == "notice" %>
-            <%= render "success_banner", title: "Success!", body: msg %>
-          <% else %>
-            <%= render "critical_banner", title: "Error", body: msg %>
-          <% end %>
-        <% end %>
-        <%= render "twitter_authentication" %>
-        <%= render "active_tweet_template" %>
-        <%= render "tweet_templates_list" %>
-      </div>
-    </div>
-  </div>
-</div>
+<% flash.each do |type, msg| %>
+  <% if type == "notice" %>
+    <%= render "success_banner", title: "Success!", body: msg %>
+  <% else %>
+    <%= render "critical_banner", title: "Error", body: msg %>
+  <% end %>
+<% end %>
+<%= render "twitter_authentication" %>
+<%= render "active_tweet_template" %>
+<%= render "tweet_templates_list" %>

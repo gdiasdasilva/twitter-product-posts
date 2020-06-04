@@ -19,7 +19,16 @@
     <div class="app-wrapper">
       <div class="app-content">
         <main role="main">
-          <%= yield %>
+          <div class="Polaris-Page">
+            <div class="Polaris-Page__Content">
+              <div class="Polaris-Layout">
+                <div class="Polaris-Layout__Section">
+                  <%= yield %>
+                </div>
+              </div>
+            </div>
+            <%= render "partials/footer" %>
+          </div>
         </main>
       </div>
     </div>
