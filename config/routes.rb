@@ -8,5 +8,7 @@ Rails.application.routes.draw do
     get "log_out"
   end
 
+  get "faqs", to: "faqs#index"
+
   resources :shops, only: [:update]
 end
