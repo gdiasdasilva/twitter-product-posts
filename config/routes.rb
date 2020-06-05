@@ -10,5 +10,6 @@ Rails.application.routes.draw do
 
   get "faqs", to: "faqs#index"
 
+  resources :tweet_templates, only: [:index]
   resources :shops, only: [:update]
 end

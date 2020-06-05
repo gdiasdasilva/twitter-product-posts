@@ -2,7 +2,10 @@
   <div class="Polaris-ActionMenu">
     <div class="Polaris-ActionMenu__ActionsLayout">
       <%= link_to root_path do %>
-        <button type="button" class="Polaris-ActionMenu-MenuAction" aria-label="Secondary action label">Home</button>
+        <button type="button" class="Polaris-ActionMenu-MenuAction" aria-label="Secondary action label">Dashboard</button>
+      <% end %>
+      <%= link_to tweet_templates_path do %>
+        <button type="button" class="Polaris-ActionMenu-MenuAction">Tweet Templates</button>
       <% end %>
       <%= link_to faqs_path do %>
         <button type="button" class="Polaris-ActionMenu-MenuAction">Frequently Asked Questions</button>
