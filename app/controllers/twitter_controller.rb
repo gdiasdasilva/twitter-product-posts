@@ -4,9 +4,13 @@ class TwitterController < AuthenticatedController
   skip_before_action :verify_authenticity_token
 
   def request_token
-    url_encoded_callback_url = ERB::Util.url_encode(twitter_oauth_callback_url)
-
-    request_token = oauth_consumer.get_request_token(oauth_callback: url_encoded_callback_url)
+    begin
+      url_encoded_callback_url = ERB::Util.url_encode(twitter_oauth_callback_url)
+      request_token = oauth_consumer.get_request_token(oauth_callback: url_encoded_callback_url)
+    rescue OAuth::Unauthorized
+      redirect_to root_path, alert: "Could not connect to Twitter. Please try again."
+      return
+    end
 
     session[:token] = request_token.token
     session[:token_secret] = request_token.secret
