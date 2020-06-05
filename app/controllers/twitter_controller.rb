@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class TwitterController < AuthenticatedController
-  skip_before_action :verify_authenticity_token
-
   def request_token
     begin
       url_encoded_callback_url = ERB::Util.url_encode(twitter_oauth_callback_url)
@@ -54,7 +52,6 @@ class TwitterController < AuthenticatedController
         ENV["TWITTER_API_SECRET"],
         site: "https://api.twitter.com",
         scheme: :body,
-        debug_output: true
       )
     end
   end
