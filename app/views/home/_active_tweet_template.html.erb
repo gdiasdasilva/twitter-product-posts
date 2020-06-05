@@ -1,10 +1,29 @@
 <div class="Polaris-Card">
-  <div class="Polaris-Card__Section Polaris-Card__Section--subdued">
-    <div class="Polaris-Card__SectionHeader">
-      <h3 class="Polaris-Subheading">Example tweet with current template</h3>
+  <div class="Polaris-Card__Header">
+    <h2 class="Polaris-Heading">Active template for auto-tweets</h2>
+  </div>
+  <div class="Polaris-Card__Section">
+    <div class="Polaris-Stack Polaris-Stack--vertical Polaris-Stack--spacingLoose">
+      <div class="Polaris-Stack__Item rendered-tweet-template">
+        <code><%= @active_tweet_template.template %></code>
+      </div>
+      <div class="Polaris-Stack__Item">
+        <div class="Polaris-Stack Polaris-Stack--distributionTrailing">
+          <div class="Polaris-Stack__Item">
+            <div class="Polaris-ButtonGroup">
+              <%= link_to tweet_templates_path do %>
+                <div class="Polaris-ButtonGroup__Item">
+                  <button type="button" class="Polaris-Button">
+                    <span class="Polaris-Button__Content">
+                      <span class="Polaris-Button__Text">Change active template</span>
+                    </span>
+                  </button>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <p class="rendered-tweet-template">
-      <%= @active_tweet_template.example_tweet %>
-    </p>
   </div>
 </div>

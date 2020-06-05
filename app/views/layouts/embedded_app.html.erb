@@ -24,6 +24,13 @@
             <div class="Polaris-Page__Content">
               <div class="Polaris-Layout">
                 <div class="Polaris-Layout__Section">
+                  <% flash.each do |type, msg| %>
+                    <% if type == "notice" %>
+                      <%= render "partials/success_banner", title: "Success!", body: msg %>
+                    <% else %>
+                      <%= render "partials/critical_banner", title: "Error", body: msg %>
+                    <% end %>
+                  <% end %>
                   <%= yield %>
                 </div>
               </div>
