@@ -13,3 +13,9 @@ handle the `products/update` webhook.
 * Ruby version: 2.6.6
 * PostgreSQL version: 12.0
 * Ruby on Rails version: 6.0.3
+
+## Screenshots
+
+![Screenshot 1](./app/assets/images/screenshot_1.png)
+
+![Screenshot 2](./app/assets/images/screenshot_2.png)
